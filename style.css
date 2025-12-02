@@ -1,0 +1,355 @@
+/* =========================================
+   1. THEME VARIABLES & RESET
+   ========================================= */
+:root {
+    --primary: #4e54c8;       /* Primary Blue */
+    --secondary: #8f94fb;     /* Lighter Blue */
+    --dark: #1f293b;          /* Dark Text */
+    --light: #f3f4f6;         /* Light Background */
+    --sidebar-bg: #1a1a2e;    /* Sidebar Color */
+    --navbar-bg: #ffffff;     /* Navbar Color */
+    --border: #e2e8f0;        /* Border Color */
+    --white: #ffffff;
+    --success: #10b981;       /* Green Color */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--light);
+    color: var(--dark);
+    overflow-x: hidden; 
+}
+
+/* =========================================
+   2. LAYOUT (Navbar, Sidebar, Content)
+   ========================================= */
+
+/* --- Top Navigation Bar --- */
+.top-navbar {
+    width: 100%;
+    height: 60px;
+    background: var(--navbar-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo-section { display: flex; align-items: center; gap: 15px; }
+.top-logo { height: 35px; width: auto; }
+.logo-section h2 { font-size: 1.2rem; letter-spacing: 1px; color: var(--primary); }
+.user-menu { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #666; }
+
+/* --- Sidebar Navigation --- */
+.sidebar {
+    width: 260px;
+    background: var(--sidebar-bg);
+    color: white;
+    padding: 20px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    height: calc(100% - 60px);
+    overflow-y: auto;
+    z-index: 900;
+}
+
+.sidebar .brand {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.85rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sidebar ul { list-style: none; }
+.sidebar li {
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: 0.2s;
+    display: flex; align-items: center; gap: 15px;
+    font-size: 0.95rem; color: #d1d5db;
+}
+
+.sidebar li:hover { background: rgba(255,255,255,0.1); color: white; }
+.sidebar li.active { background: var(--primary); color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+
+/* --- Main Content Area --- */
+.content {
+    margin-left: 260px;
+    margin-top: 60px;
+    padding: 30px;
+    width: calc(100% - 260px);
+    display: flex; flex-direction: column;
+    min-height: calc(100vh - 60px);
+}
+
+/* =========================================
+   3. HEADERS (Tool Titles)
+   ========================================= */
+
+/* Premium Header (For Passport Tool) */
+.premium-tool-header {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex; align-items: center; gap: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid var(--border);
+    margin-bottom: 25px;
+}
+
+.header-icon-box {
+    width: 50px; height: 50px;
+    background: linear-gradient(135deg, #4f46e5, #4338ca);
+    color: white;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.header-info h3 { margin: 0; color: #1e293b; font-size: 1.25rem; }
+.header-info p { margin: 2px 0 0; color: #64748b; font-size: 0.9rem; }
+
+.pro-badge {
+    background: #dcfce7; color: #166534;
+    padding: 4px 10px; border-radius: 20px;
+    font-size: 0.75rem; font-weight: bold;
+    margin-left: auto;
+}
+
+/* Legacy Header (For Other Tools) */
+.tool-header {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-left: 5px solid var(--primary);
+}
+.tool-header h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 5px; }
+.tool-header p { color: #666; font-size: 0.9rem; }
+
+/* =========================================
+   4. UI COMPONENTS (Buttons, Inputs, Controls)
+   ========================================= */
+
+/* Inputs & Selects */
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(78, 84, 200, 0.1);
+}
+
+/* Buttons */
+.btn-primary, .btn-premium {
+    background: var(--primary);
+    color: white; border: none;
+    padding: 12px 25px; border-radius: 6px;
+    cursor: pointer; font-size: 1rem; font-weight: 500;
+    transition: 0.3s;
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    box-shadow: 0 2px 5px rgba(78, 84, 200, 0.3);
+}
+.btn-premium { background: linear-gradient(135deg, #1e293b, #0f172a); }
+.btn-primary:hover, .btn-premium:hover { transform: translateY(-1px); opacity: 0.9; }
+
+.btn-secondary {
+    background: var(--success);
+    color: white; border: none;
+    padding: 8px 15px; border-radius: 5px;
+    cursor: pointer; font-size: 0.9rem;
+}
+
+/* Control Wrappers */
+.controls-wrapper {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+}
+
+.settings-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+    margin-top: 20px; background: #f8fafc;
+    padding: 15px; border-radius: 8px; border: 1px solid var(--border);
+}
+
+.setting-item label { display: block; font-size: 0.85rem; font-weight: 600; color: #475569; margin-bottom: 5px; }
+.full-col { grid-column: span 2; }
+.full-width { width: 100%; margin-top: 15px; }
+
+/* Custom Quantity Input Style */
+.custom-qty-input {
+    display: none; width: 80px !important;
+    border: 2px solid var(--primary) !important;
+    font-weight: bold; color: var(--primary);
+}
+
+/* =========================================
+   5. A4 PAGE & PREVIEW
+   ========================================= */
+.print-preview-stage {
+    background: #e2e8f0;
+    padding: 40px;
+    border-radius: 12px;
+    display: flex; flex-direction: column; align-items: center;
+}
+
+.stage-label {
+    margin-bottom: 15px; font-weight: 600; color: #64748b;
+    text-transform: uppercase; font-size: 0.8rem;
+}
+
+.a4-page {
+    width: 210mm; min-height: 297mm;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 0 auto; padding: 20mm;
+    position: relative; box-sizing: border-box;
+}
+
+/* Passport Grid */
+.passport-grid-flex {
+    display: flex; flex-wrap: wrap; align-content: flex-start;
+    padding: 10mm; background: white;
+}
+.photo-wrapper {
+    display: inline-block; border: 1px solid #ddd;
+    box-sizing: border-box; overflow: hidden;
+}
+.photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.empty-state-premium { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; color: #aaa; }
+
+/* =========================================
+   6. RESUME & BILL TOOLS
+   ========================================= */
+.editor-layout { display: flex; gap: 30px; flex-wrap: wrap; }
+.form-side {
+    flex: 1; min-width: 320px; background: white;
+    padding: 25px; border-radius: 10px;
+    height: fit-content; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.form-side h4 { margin-bottom: 15px; color: var(--primary); border-bottom: 1px solid #eee; padding-bottom: 5px; }
+
+/* Resume Paper */
+.resume-header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 20px; margin-bottom: 25px; }
+.resume-header h1 { font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; }
+.resume-section h5 { background: #f3f4f6; padding: 8px 10px; margin-bottom: 12px; text-transform: uppercase; font-weight: 600; border-left: 4px solid var(--dark); }
+.formatted-text { white-space: pre-wrap; font-size: 0.95rem; line-height: 1.6; color: #333; }
+
+/* Bill Table */
+.bill-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+.bill-table th { background-color: var(--primary); color: white; padding: 12px; }
+.bill-table td { border: 1px solid #ddd; padding: 12px; }
+.bill-footer-section { margin-top: 30px; text-align: right; }
+.text-right { text-align: right; } .text-center { text-align: center; }
+
+/* =========================================
+   7. UTILITIES (Upload & Modals)
+   ========================================= */
+
+/* Upload Box */
+.upload-area {
+    border: 2px dashed #ccc; padding: 40px;
+    border-radius: 15px; cursor: pointer; transition: 0.3s;
+    background: #fafafa; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+}
+.upload-area:hover { border-color: var(--primary); background: #f0f0ff; }
+
+/* Crop Modal */
+.modal-overlay {
+    position: fixed; z-index: 2000; left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    display: flex; align-items: center; justify-content: center;
+}
+.modal-content {
+    background-color: #fff; width: 90%; max-width: 500px;
+    border-radius: 12px; overflow: hidden; animation: zoomIn 0.3s;
+}
+.modal-header { padding: 15px 20px; background: #f8fafc; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
+.crop-body { padding: 10px; height: 400px; background: #222; }
+.modal-footer { padding: 15px; display: flex; justify-content: flex-end; gap: 10px; background: #fff; border-top: 1px solid #e2e8f0; }
+.img-container { height: 100%; width: 100%; }
+.img-container img { display: block; max-width: 100%; }
+.close-modal { font-size: 24px; cursor: pointer; }
+
+@keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
+.main-footer {
+    margin-top: auto; padding: 40px 0;
+    text-align: center; border-top: 1px solid #ddd;
+    background: #fff; width: 100%;
+}
+.dev-logo { height: 50px; margin: 15px auto; display: block; transition: 0.3s; }
+.dev-logo:hover { transform: scale(1.05); }
+
+/* =========================================
+   9. RESPONSIVE & PRINT RULES
+   ========================================= */
+@media (max-width: 768px) {
+    .sidebar { transform: translateX(-100%); }
+    .content { margin-left: 0; width: 100%; padding: 15px; }
+    .editor-layout { flex-direction: column; }
+    .settings-grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+    /* Hide Interface */
+    .top-navbar, .sidebar, .main-footer, .premium-tool-header, 
+    .controls-wrapper, .stage-label, .modal-overlay, .user-menu, 
+    .no-print, .upload-area, .action-buttons {
+        display: none !important;
+    }
+
+    /* Reset Layout */
+    body, html, .app-container, .content, .print-preview-stage {
+        background: white !important; margin: 0 !important;
+        padding: 0 !important; width: 100% !important;
+        border: none !important; overflow: visible !important;
+    }
+
+    /* Active Tool Only */
+    .tool-section { display: none; }
+    .tool-section.active-tool { display: block; }
+
+    /* A4 Settings */
+    .a4-page {
+        margin: 0 !important; box-shadow: none !important;
+        width: 210mm !important; height: auto !important;
+        padding: 0 !important; page-break-after: always;
+    }
+    
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
